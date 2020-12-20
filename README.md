@@ -10,5 +10,5 @@ A very simple markdown parser.
 npm i ultra-simple-md-parser
 ```
 
-***Using:***
+***Usage:***
 

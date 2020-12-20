@@ -1,77 +1,88 @@
 import { expect } from 'chai';
-import MDParser from '../src/md-parser-factory';
+import MDParser, {
+  strong,
+  emphasis,
+  anchor,
+  paragraph,
+  header,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  image,
+  inlineCode,
+} from '../src/md-parser-factory';
 
 describe('Markdown converter', () => {
   describe('Smoke tests', () => {
-    const md = MDParser('Smoke Tests');
-
-    it('should exist a method called parse', () => {
-      expect(md.parse).to.be.a('function');
+    it('should exist a function MDParser', () => {
+      expect(MDParser).to.be.a('function');
     });
 
-    it('should exist a method called inlineCode', () => {
-      expect(md.inlineCode).to.be.a('function');
+    it('should exist a function called inlineCode', () => {
+      expect(inlineCode).to.be.a('function');
     });
 
-    it('should exist a method called header', () => {
-      expect(md.header).to.be.a('function');
+    it('should exist a function called header', () => {
+      expect(header).to.be.a('function');
     });
 
-    it('should exist a method called paragraph', () => {
-      expect(md.paragraph).to.be.a('function');
+    it('should exist a function called paragraph', () => {
+      expect(paragraph).to.be.a('function');
     });
 
-    it('should exist a method called strong', () => {
-      expect(md.strong).to.be.a('function');
+    it('should exist a function called strong', () => {
+      expect(strong).to.be.a('function');
     });
 
-    it('should exist a method called h1', () => {
-      expect(md.h1).to.be.a('function');
+    it('should exist a function called h1', () => {
+      expect(h1).to.be.a('function');
     });
 
-    it('should exist a method called h2', () => {
-      expect(md.h2).to.be.a('function');
+    it('should exist a function called h2', () => {
+      expect(h2).to.be.a('function');
     });
 
-    it('should exist a method called h3', () => {
-      expect(md.h3).to.be.a('function');
+    it('should exist a function called h3', () => {
+      expect(h3).to.be.a('function');
     });
 
-    it('should exist a method called h4', () => {
-      expect(md.h4).to.be.a('function');
+    it('should exist a function called h4', () => {
+      expect(h4).to.be.a('function');
     });
 
-    it('should exist a method called h5', () => {
-      expect(md.h5).to.be.a('function');
+    it('should exist a function called h5', () => {
+      expect(h5).to.be.a('function');
     });
 
-    it('should exist a method called h6', () => {
-      expect(md.h6).to.be.a('function');
+    it('should exist a function called h6', () => {
+      expect(h6).to.be.a('function');
     });
 
-    it('should exist a method called anchor', () => {
-      expect(md.anchor).to.be.a('function');
+    it('should exist a function called anchor', () => {
+      expect(anchor).to.be.a('function');
     });
 
-    it('should exist a method called emphasis', () => {
-      expect(md.emphasis).to.be.a('function');
+    it('should exist a function called emphasis', () => {
+      expect(emphasis).to.be.a('function');
     });
 
-    it('should exist a method called image', () => {
-      expect(md.image).to.be.a('function');
+    it('should exist a function called image', () => {
+      expect(image).to.be.a('function');
     });
   });
 
-  describe('MDParser.header', () => {
+  describe('header function', () => {
     it('should return empty string if passed empty string', () => {
-      const md = MDParser('');
+      const htmlText = header('');
 
-      md.header();
-      expect(md.text).to.be.equal('');
+      expect(htmlText).to.be.equal('');
     });
 
     it('should convert multiline text with all valid header markup', () => {
-      const md = MDParser(`
+      const htmlText = header(`
 # Header 1
 Nomo no nomomno ono ipsum
 
@@ -117,126 +128,112 @@ Nomo no nomomno ono ipsum
 Nomo no nomomno ono ipsum
 `;
 
-      md.header();
-      expect(md.text).to.be.equal(expected);
+      expect(htmlText).to.be.equal(expected);
     });
 
     it('should ignore convertion if passed more than 6 hash chars', () => {
       expect('####### is an unknown markup').to.be.equal('####### is an unknown markup');
     });
 
-    describe('MDParser.h1', () => {
+    describe('h1 function', () => {
       it('should convert text single line started with # to h1', () => {
-        const md = MDParser('# Ipsum Lorem?');
+        const htmlText = h1('# Ipsum Lorem?');
 
-        md.h1();
-        expect(md.text).to.be.equal('<h1 class="md-h1">Ipsum Lorem?</h1>');
+        expect(htmlText).to.be.equal('<h1 class="md-h1">Ipsum Lorem?</h1>');
       });
 
       it('should convert text multiline started with # to h1', () => {
-        const md = MDParser('# Lorem Ipsum!\n# Ipsum Lorem?');
+        const htmlText = h1('# Lorem Ipsum!\n# Ipsum Lorem?');
 
-        md.h1();
-        expect(md.text).to.be.equal('<h1 class="md-h1">Lorem Ipsum!</h1>\n<h1 class="md-h1">Ipsum Lorem?</h1>');
+        expect(htmlText).to.be.equal('<h1 class="md-h1">Lorem Ipsum!</h1>\n<h1 class="md-h1">Ipsum Lorem?</h1>');
       });
     });
 
-    describe('MDParser.h2', () => {
+    describe('h2 function', () => {
       it('should convert text line started with ## to h2', () => {
-        const md = MDParser('## I am header 2!');
+        const htmlText = h2('## I am header 2!');
 
-        md.h2();
-        expect(md.text).to.be.equal('<h2 class="md-h2">I am header 2!</h2>');
+        expect(htmlText).to.be.equal('<h2 class="md-h2">I am header 2!</h2>');
       });
     });
 
-    describe('MDParser.h3', () => {
+    describe('h3 function', () => {
       it('should convert text line started with ### to h3', () => {
-        const md = MDParser('### I am header 3!');
-        md.h3();
+        const htmlText = h3('### I am header 3!');
 
-        expect(md.text).to.be.equal('<h3 class="md-h3">I am header 3!</h3>');
+        expect(htmlText).to.be.equal('<h3 class="md-h3">I am header 3!</h3>');
       });
     });
 
-    describe('MDParser.h4', () => {
+    describe('h4 function', () => {
       it('should convert text line started with #### to h4', () => {
-        const md = MDParser('#### I am header 4!');
-        md.h4();
+        const htmlText = h4('#### I am header 4!');
 
-        expect(md.text).to.be.equal('<h4 class="md-h4">I am header 4!</h4>');
+        expect(htmlText).to.be.equal('<h4 class="md-h4">I am header 4!</h4>');
       });
     });
 
-    describe('MDParser.h5', () => {
+    describe('h5 function', () => {
       it('should convert text line started with ##### to h5', () => {
-        const md = MDParser('##### I am header 5!');
+        const htmlText = h5('##### I am header 5!');
 
-        md.h5();
-        expect(md.text).to.be.equal('<h5 class="md-h5">I am header 5!</h5>');
+        expect(htmlText).to.be.equal('<h5 class="md-h5">I am header 5!</h5>');
       });
     });
 
-    describe('MDParser.h6', () => {
+    describe('h6 function', () => {
       it('should convert text line started with ###### to h6', () => {
-        const md = MDParser('###### I am header 6!');
+        const htmlText = h6('###### I am header 6!');
 
-        md.h6();
-        expect(md.text).to.be.equal('<h6 class="md-h6">I am header 6!</h6>');
+        expect(htmlText).to.be.equal('<h6 class="md-h6">I am header 6!</h6>');
       });
     });
   });
 
-  describe('MDParser.strong', () => {
+  describe('strong function', () => {
     it('should convert the pattern **<text>** to <strong class="md-strong"><text></strong>', () => {
-      const md = MDParser('Axis: **Bold** as Love');
+      const htmlText = strong('Axis: **Bold** as Love');
 
-      md.strong();
-      expect(md.text).to.be.equal('Axis: <strong class="md-strong">Bold</strong> as Love');
+      expect(htmlText).to.be.equal('Axis: <strong class="md-strong">Bold</strong> as Love');
     });
 
     it('should convert the pattern __<text>__ to <strong class="md-strong"><text></strong>', () => {
-      const md = MDParser('Axis: __Bold__ as Love');
+      const htmlText = strong('Axis: __Bold__ as Love');
 
-      md.strong();
-      expect(md.text).to.be.equal('Axis: <strong class="md-strong">Bold</strong> as Love');
+      expect(htmlText).to.be.equal('Axis: <strong class="md-strong">Bold</strong> as Love');
     });
   });
 
-  describe('MDParser.emphasis', () => {
+  describe('emphasis function', () => {
     it('should convert the pattern _<text>_ to <em class="md-emphasis"><text></em> in single line', () => {
-      const md = MDParser('this is an _emphasis_');
+      const htmlText = emphasis('this is an _emphasis_');
 
-      md.emphasis();
-      expect(md.text).to.be.equal('this is an <em class="md-emphasis">emphasis</em>');
+      expect(htmlText).to.be.equal('this is an <em class="md-emphasis">emphasis</em>');
     });
 
     it('should convert the pattern *<text>* to <em class="md-emphasis"><text></em> in single line', () => {
-      const md = MDParser('this is an *emphasis*');
+      const htmlText = emphasis('this is an *emphasis*');
 
-      md.emphasis();
-      expect(md.text).to.be.equal('this is an <em class="md-emphasis">emphasis</em>');
+      expect(htmlText).to.be.equal('this is an <em class="md-emphasis">emphasis</em>');
     });
 
     it('should convert the pattern _<text>_ to <em class="md-emphasis"><text></em> in multiline text', () => {
-      const md = MDParser('Testing a multiline text with _emphasis_\n\n\nthis is a new _line_');
+      const htmlText = emphasis('Testing a multiline text with _emphasis_\n\n\nthis is a new _line_');
       const expected = 'Testing a multiline text with <em class="md-emphasis">emphasis</em>\n\n\nthis is a new <em class="md-emphasis">line</em>';
 
-      md.emphasis();
-      expect(md.text).to.be.equal(expected);
+      expect(htmlText).to.be.equal(expected);
     });
   });
 
-  describe('MDParser.anchor', () => {
+  describe('anchor function', () => {
     it('should convert the pattern [<text>](<link>) to anchor link', () => {
-      const md = MDParser('Testing my [super link](https://foo.com.br)');
+      const htmlText = anchor('Testing my [super link](https://foo.com.br)');
 
-      md.anchor();
-      expect(md.text).to.be.equal('Testing my <a class="md-anchor" href="https://foo.com.br">super link</a>');
+      expect(htmlText).to.be.equal('Testing my <a class="md-anchor" href="https://foo.com.br">super link</a>');
     });
   });
 
-  describe('MDParser.paragraph', () => {
+  describe('paragraph function', () => {
     it('should wrap which line without markups with paragraph tag', () => {
       const text = `
 ## My Super Cool Title
@@ -274,10 +271,9 @@ It's a paragraph
 
 <p class="md-paragraph">It's a paragraph</p>
 `;
-      const md = MDParser(text);
-      md.paragraph();
+      const htmlText = paragraph(text);
 
-      expect(md.text).to.be.equal(expected);
+      expect(htmlText).to.be.equal(expected);
     });
   });
 
@@ -335,27 +331,24 @@ It parse image ![bar](http://foo.com/)
 
 <p class="md-paragraph">It parse image <img class="md-image" src="http://foo.com/" alt="bar" /></p>
 `;
-      const md = MDParser(text);
+      const htmlText = MDParser(text);
 
-      md.parse();
-      expect(md.text).to.be.equal(expected);
+      expect(htmlText).to.be.equal(expected);
     });
   });
-  describe('MDParser.image', () => {
+  describe('image function', () => {
     it('should convert image markup to html', () => {
-      const md = MDParser('Text with ![image](https://imgsrc.com)');
+      const htmlText = image('Text with ![image](https://imgsrc.com/?param=_Teste_)');
 
-      md.image();
-      expect(md.text).to.be.equal('Text with <img class="md-image" src="https://imgsrc.com" alt="image" />');
+      expect(htmlText).to.be.equal('Text with <img class="md-image" src="https://imgsrc.com/?param=_Teste_" alt="image" />');
     });
   });
 
-  describe('MDParser.inlineCode', () => {
+  describe('inlineCode function', () => {
     it('should convert `<text>` to span.md-inline-code', () => {
-      const md = MDParser('this is a `inline-code`');
+      const htmlText = inlineCode('this is a `inline-code`');
 
-      md.inlineCode();
-      expect(md.text).to.be.equal('this is a <span class="md-inline-code">inline-code</span>');
+      expect(htmlText).to.be.equal('this is a <span class="md-inline-code">inline-code</span>');
     });
   });
 });
