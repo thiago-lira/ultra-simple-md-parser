@@ -1,7 +1,9 @@
 import { expect } from 'chai';
-import {
+import formatters from '../src/formatters';
+
+const {
   applyH1, applyH2, applyH3, applyH4, applyH5, applyH6,
-} from '../src/formatters';
+} = formatters;
 
 describe('Formatters', () => {
   describe('Smoke tests', () => {
@@ -31,6 +33,28 @@ describe('Formatters', () => {
   });
 
   describe('applyH1 function', () => {
+    it('should to remove if markup already exist', () => {
+      expect(applyH1('# A simple title', 0)).to.be.equal('A simple title');
+    });
+
+    it('should to remove if markup already exist in multiline text', () => {
+      const text = `
+Just a line
+# Here is the Title
+Just another line
+`;
+      const expected = `
+Just a line
+Here is the Title
+Just another line
+`;
+      expect(applyH1(text, 14)).to.be.equal(expected);
+    });
+
+    it('should to replace if exists another header', () => {
+      expect(applyH1('## A simple title', 4)).to.be.equal('# A simple title');
+    });
+
     it('should to apply a h1 at the beginning of line', () => {
       expect(applyH1('A simple title', 4)).to.be.equal('# A simple title');
     });
