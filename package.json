@@ -2,7 +2,7 @@
   "name": "ultra-simple-md-parser",
   "version": "1.0.0",
   "description": "A simple markdown parser",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "lint": "eslint src/**/*.js",
     "build": "rm -rf dist && webpack --color --progress",

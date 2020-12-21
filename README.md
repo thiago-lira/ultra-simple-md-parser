@@ -7,8 +7,10 @@ A very simple markdown parser.
 **Installing**:
 
 ```shell
-npm i ultra-simple-md-parser
+npm i ultra-simple-md-parser -save
 ```
 
-***Usage:***
-
+**Usage:**
+```js
+import mdParser
+```

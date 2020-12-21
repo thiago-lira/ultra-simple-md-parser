@@ -3,7 +3,7 @@ export const strong = (text) => text
 
 export const emphasis = (text) => text
   .replace(/\s(\*)((?!\*)\S(.*?))\1(?!\*)/g, ' <em class="md-emphasis">$2</em>')
-  .replace(/\b(_)((?!_)\S(.*?))(_)/gim, '<em class="md-emphasis">$2</em>');
+  .replace(/\b(_)((?!_)\S(.*?))(_)/g, '<em class="md-emphasis">$2</em>');
 
 export const anchor = (text) => text
   .replace(/[^!]\[(.*?)\]\((.*?)\)/g, ' <a class="md-anchor" href="$2">$1</a>');
