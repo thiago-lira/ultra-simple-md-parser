@@ -1,6 +1,9 @@
 export const strong = (text) => text
   .replace(/(\*\*|__)(.*?)\1/gi, '<strong class="md-strong">$2</strong>');
 
+export const strike = (text) => text
+  .replace(/~(.+?)~/g, '<strike class="md-strike">$1</strike>');
+
 export const emphasis = (text) => text
   .replace(/\s(\*)((?!\*)\S(.*?))\1(?!\*)/g, ' <em class="md-emphasis">$2</em>')
   .replace(/\b(_)((?!_)\S(.*?))(_)/g, '<em class="md-emphasis">$2</em>');

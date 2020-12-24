@@ -13,12 +13,17 @@ import MDParser, {
   h6,
   image,
   inlineCode,
+  strike,
 } from '../src/md-parser-factory';
 
 describe('Markdown converter', () => {
   describe('Smoke tests', () => {
     it('should exist a function MDParser', () => {
       expect(MDParser).to.be.a('function');
+    });
+
+    it('should exist a function called strike', () => {
+      expect(strike).to.be.a('function');
     });
 
     it('should exist a function called inlineCode', () => {
@@ -349,6 +354,15 @@ It parse image ![bar](http://foo.com/)
       const htmlText = inlineCode('this is a `inline-code`');
 
       expect(htmlText).to.be.equal('this is a <span class="md-inline-code">inline-code</span>');
+    });
+  });
+
+  describe('strike function', () => {
+    it('should convert ~<text>~ to <strike><text></strike>', () => {
+      const html = strike('~that~ this test is ~not~ passing ~failing~');
+      const expected = strike('<strike class="md-strike">that</strike> this test is <strike class="md-strike">not</strike> passing <strike class="md-strike">failing</strike>');
+
+      expect(html).to.be.equal(expected);
     });
   });
 });
