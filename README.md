@@ -24,31 +24,37 @@ import mdParser
 
 **Headings**
 
-**H1**
+* **H1**
 ```javascript
 mdParser.h1(myMdText)
 ```
 
-**H2**
+* **H2**
 ```javascript
 mdParser.h2(myMdText)
 ```
 
-**H3**
+* **H3**
 ```javascript
 mdParser.h3(myMdText)
 ```
 
-**H4**
+* **H4**
 ```javascript
 mdParser.h4(myMdText)
 ```
 
-**H5**
+* **H5**
 ```javascript
-mdParser.h1(myMdText)
+mdParser.h5(myMdText)
 ```
-**H6**
+* **H6**
 ```javascript
 mdParser.h6(myMdText)
+```
+
+**Strike**
+
+```javascript
+mdParser.strike(myMdText)
 ```
