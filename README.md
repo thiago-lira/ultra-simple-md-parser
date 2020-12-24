@@ -24,13 +24,13 @@ import mdParser from 'ultra-simple-md-parser'
 
 Method | Arguments | Description
 -------|-----------|------------
-`mdParser.header(text)`| `{string} text` | Applies h1-h6 tags in lines starting between # and ##### followed by space
-`mdParser.h1(text)`| `{string} text` | Applies h1 tag in lines starting with # followed by space
-`mdParser.h2(text)`| `{string} text` | Applies h2 tag in lines starting with ## followed by space
-`mdParser.h3(text)`| `{string} text` | Applies h3 tag in lines starting with ### followed by space
-`mdParser.h4(text)`| `{string} text` | Applies h4 tag in lines starting with #### followed by space
-`mdParser.h5(text)`| `{string} text` | Applies h5 tag in lines starting with ##### followed by space
-`mdParser.h6(text)`| `{string} text` | Applies h6 tag in lines starting with ###### followed by space
+`mdParser.header(text)`| `{string} text` | Applies h1, h2, ..., h6 tags for each line starting with #, ##, ..., ###### followed by space
+`mdParser.h1(text)`| `{string} text` | Applies h1 tag for each line starting with # followed by space
+`mdParser.h2(text)`| `{string} text` | Applies h2 tag for each line starting with ## followed by space
+`mdParser.h3(text)`| `{string} text` | Applies h3 tag for each line starting with ### followed by space
+`mdParser.h4(text)`| `{string} text` | Applies h4 tag for each line starting with #### followed by space
+`mdParser.h5(text)`| `{string} text` | Applies h5 tag for each line starting with ##### followed by space
+`mdParser.h6(text)`| `{string} text` | Applies h6 tag for each line starting with ###### followed by space
 `mdParser.strike(text)`| `{string} text` | Applies strike tag in terms surrounded by ~
 `mdParser.emphasis(text)`| `{string} text` | Applies strike tag in terms surrounded by * or _
 `mdParser.strong(text)`| `{string} text` | Applies strike tag in terms surrounded by ** or __
