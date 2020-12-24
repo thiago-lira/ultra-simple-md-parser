@@ -4,6 +4,11 @@ export const strong = (text) => text
 export const strike = (text) => text
   .replace(/~(.+?)~/g, '<strike class="md-strike">$1</strike>');
 
+export const blockquote = (text) => {
+  const pattern = /^>\s(.*)$/gm;
+  return text.replace(pattern, '<span class="md-blockquote">$1</span>');
+};
+
 export const emphasis = (text) => text
   .replace(/\s(\*)((?!\*)\S(.*?))\1(?!\*)/g, ' <em class="md-emphasis">$2</em>')
   .replace(/\b(_)((?!_)\S(.*?))(_)/g, '<em class="md-emphasis">$2</em>');
@@ -41,7 +46,9 @@ export const inlineCode = (text) => text
 export const header = (text) => h1(h2(h3(h4(h5(h6(text))))));
 
 export default (text) => {
-  const funcs = [emphasis, anchor, paragraph, strong, image, inlineCode, h1, h2, h3, h4, h5, h6];
+  const funcs = [
+    emphasis, anchor, paragraph, strong, image, inlineCode, h1, h2, h3, h4, h5, h6, strike,
+  ];
 
   return funcs.reduce((acc, fn) => fn(acc), text);
 };
