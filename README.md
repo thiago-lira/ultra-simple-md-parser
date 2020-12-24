@@ -38,3 +38,4 @@ Method | Arguments | Description
 `mdParser.anchor(text)`| `{string} text` | Applies anchor tag for pattern [some text](some link)
 `mdParser.image(text)`| `{string} text` | Applies image tag for pattern ![alt text](src link)
 `mdParser.inlineCode(text)`| `{string} text` | Applies inline code for pattern \`some code\`
+`mdParser.blockquote(text)`| `{string} text` | Applies blockquote for each line starting with >
