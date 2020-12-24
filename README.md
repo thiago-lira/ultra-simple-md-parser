@@ -24,11 +24,6 @@ import mdParser
 mdParser.h1(myMdText)
 ```
 
-**H1**
-```javascript
-mdParser.h1(myMdText)
-```
-
 **H2**
 ```javascript
 mdParser.h2(myMdText)
