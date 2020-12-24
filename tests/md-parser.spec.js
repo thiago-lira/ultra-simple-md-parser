@@ -14,12 +14,17 @@ import MDParser, {
   image,
   inlineCode,
   strike,
+  blockquote,
 } from '../src/md-parser-factory';
 
 describe('Markdown converter', () => {
   describe('Smoke tests', () => {
     it('should exist a function MDParser', () => {
       expect(MDParser).to.be.a('function');
+    });
+
+    it('should exist a function called blockquote', () => {
+      expect(blockquote).to.be.a('function');
     });
 
     it('should exist a function called strike', () => {
@@ -291,7 +296,7 @@ A simple _md_ __parser__
 
 ## Header 2
 
-It parse links ! [like this](http://pudim.com.br)
+It ~should not~ parse links ! [like this](http://pudim.com.br)
 
 ### Header 3
 
@@ -317,7 +322,7 @@ It parse image ![bar](http://foo.com/)
 
 <h2 class="md-h2">Header 2</h2>
 
-<p class="md-paragraph">It parse links ! <a class="md-anchor" href="http://pudim.com.br">like this</a></p>
+<p class="md-paragraph">It <strike class="md-strike">should not</strike> parse links ! <a class="md-anchor" href="http://pudim.com.br">like this</a></p>
 
 <h3 class="md-h3">Header 3</h3>
 
@@ -363,6 +368,15 @@ It parse image ![bar](http://foo.com/)
       const expected = strike('<strike class="md-strike">that</strike> this test is <strike class="md-strike">not</strike> passing <strike class="md-strike">failing</strike>');
 
       expect(html).to.be.equal(expected);
+    });
+  });
+
+  describe('blockquote function', () => {
+    it('should create a blockquote for lines starting with >', () => {
+      const text = '> This is a blockquote';
+      const expected = '<span class="md-blockquote">This is a blockquote</span>';
+
+      expect(blockquote(text)).to.be.equal(expected);
     });
   });
 });
