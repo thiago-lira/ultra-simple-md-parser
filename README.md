@@ -2,7 +2,12 @@
 
 A very simple markdown parser.
 
-## Getting started
+## Summary
+
+* [Getting Started](#getting-started)
+* [API](#api)
+
+## Getting Started
 
 **Installing**:
 
