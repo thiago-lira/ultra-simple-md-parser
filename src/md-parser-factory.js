@@ -4,10 +4,8 @@ export const strong = (text) => text
 export const strike = (text) => text
   .replace(/~(.+?)~/g, '<strike class="md-strike">$1</strike>');
 
-export const blockquote = (text) => {
-  const pattern = /^>\s(.*)$/gm;
-  return text.replace(pattern, '<span class="md-blockquote">$1</span>');
-};
+export const blockquote = (text) => text
+  .replace(/^>\s(.*)$/gm, '<span class="md-blockquote">$1</span>');
 
 export const emphasis = (text) => text
   .replace(/\s(\*)((?!\*)\S(.*?))\1(?!\*)/g, ' <em class="md-emphasis">$2</em>')
