@@ -32,8 +32,8 @@ Method | Arguments | Description
 `mdParser.h5(text)`| `{string} text` | Applies h5 tag for each line starting with ##### followed by space
 `mdParser.h6(text)`| `{string} text` | Applies h6 tag for each line starting with ###### followed by space
 `mdParser.strike(text)`| `{string} text` | Applies strike tag in terms surrounded by ~
-`mdParser.emphasis(text)`| `{string} text` | Applies strike tag in terms surrounded by * or _
-`mdParser.strong(text)`| `{string} text` | Applies strike tag in terms surrounded by ** or __
+`mdParser.emphasis(text)`| `{string} text` | Applies emphasis tag in terms surrounded by * or _
+`mdParser.strong(text)`| `{string} text` | Applies strong tag in terms surrounded by ** or __
 `mdParser.paragraph(text)`| `{string} text` | Applies paragraph tag in not heading lines
 `mdParser.anchor(text)`| `{string} text` | Applies anchor tag for pattern [some text](some link)
 `mdParser.image(text)`| `{string} text` | Applies image tag for pattern ![alt text](src link)
